@@ -1,5 +1,0 @@
-package NonPrimitiveTypecastingCarExample;
-
-public class DieselEngine implements Engine{
-
-}

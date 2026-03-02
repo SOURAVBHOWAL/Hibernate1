@@ -1,5 +1,0 @@
-package AbstractOverrideExample;
-
-public class DieselEngine implements Engine{
-
-}
