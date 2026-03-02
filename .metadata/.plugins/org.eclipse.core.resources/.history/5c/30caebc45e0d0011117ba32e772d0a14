@@ -1,0 +1,28 @@
+import java.util.function.BiFunction;
+import java.util.function.Function;
+interface I1{
+	String func(String s1,String s2);
+}
+public class Demo1 {
+	
+	public static String pri(String s1,String s2) {
+		return (s1+s2);
+	}
+	
+	public static void main(String[] args) {
+		Function<Integer,Double> f=(n)->Math.sqrt(n);
+		System.out.println(f.apply(16));
+		Function<Integer,Double> f2=Math::sqrt;
+		System.out.println(f2.apply(25));
+//		I1 i=Math::sqrt;
+//		System.out.println(i.func(49.0));
+		BiFunction<String,String,String> b=Demo1::pri;
+		System.out.println(b.apply("hi","bye"));
+
+		I1 i=Demo1::pri;
+		System.out.println(i.func("hello","bye"));
+		
+		
+	}
+
+}

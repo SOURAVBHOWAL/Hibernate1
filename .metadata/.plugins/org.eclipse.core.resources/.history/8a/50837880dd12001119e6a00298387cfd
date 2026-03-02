@@ -1,0 +1,105 @@
+package com.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Jdbc {
+
+	public static void main(String[] args) {
+		String url="jdbc:mysql://127.0.0.1:3306/mysql_db";
+		String userName="root";
+		String password="0000";
+		Connection con=null;
+		Statement st=null;
+		ResultSet rs=null;
+		//1.
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//2.
+		try {
+			con=DriverManager.getConnection(url,userName,password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//3.
+		try {
+			st=con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//4.
+		try {
+			rs=st.executeQuery("Select * from Student");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//5. CRUD
+		//select
+//		try {
+//			while(rs.next()) {
+//				System.out.println(
+//						rs.getInt(1)+" "+
+//						rs.getString(2)+" "+
+//						rs.getInt(3)+" "+
+//						rs.getString(4)+" "+
+//						rs.getString(5)+" "+
+//						rs.getDouble(6)
+//						);
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		//insert
+//		try {
+//			st.executeUpdate("INSERT INTO student (name, age, gender, email, marks)\r\n"
+//					+ "VALUES ('Amit', 23, 'Male', 'amit@gmail.com', 88.75);");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		//delete
+//		try {
+//			st.executeUpdate("DELETE FROM student\r\n"
+//					+ "WHERE id = 3;");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		try {
+			st.executeUpdate("UPDATE student\r\n"
+					+ "SET marks = 95.50\r\n"
+					+ "WHERE id = 1;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while(rs.next()) {
+				System.out.println(
+						rs.getInt(1)+" "+
+						rs.getString(2)+" "+
+						rs.getInt(3)+" "+
+						rs.getString(4)+" "+
+						rs.getString(5)+" "+
+						rs.getDouble(6)
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

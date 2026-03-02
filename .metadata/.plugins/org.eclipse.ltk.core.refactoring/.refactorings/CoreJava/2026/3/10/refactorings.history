@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;Demo&apos; to &apos;CoreJava/src/DateTime&apos;&#x0D;&#x0A;- Original project: &apos;CoreJava&apos;&#x0D;&#x0A;- Destination element: &apos;CoreJava/src/DateTime&apos;&#x0D;&#x0A;- Original element: &apos;CoreJava/src/Demo&apos;" description="Copy package" destination="/src&lt;DateTime" element1="/src&lt;Demo" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1772441781881" version="1.0"/>
+</session>

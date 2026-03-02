@@ -1,0 +1,12 @@
+package CustomException;
+
+public class PasswordException extends RuntimeException{
+	static int tries=0,limit=3;
+	public PasswordException(String msg) {
+		super(msg);
+		tries++;
+		if(tries==limit) {
+			throw new PasswordException("Limit crossed!");
+		}
+	}
+}

@@ -1,0 +1,7 @@
+package CustomException;
+
+public class PasswordUnmatchedException extends RuntimeException{
+	PasswordUnmatchedException(String msg){
+		super(msg);
+	}
+}

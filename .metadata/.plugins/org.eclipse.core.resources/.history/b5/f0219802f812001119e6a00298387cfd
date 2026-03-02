@@ -1,0 +1,28 @@
+package CustomException;
+
+import java.util.Scanner;
+
+public class DriverPasswordCheck {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int c=1,limit=3;
+		String pass="0000";
+		System.out.println("enter password:");
+		while(c<=limit) {
+			if(pass.equals(sc.nextLine())) {
+				System.out.println("matched");
+				break;
+			}
+			else {
+				System.out.println("Not matched "+ (limit-c)+" try left. ");
+			}
+			c++;
+		}
+		if(c>limit) {
+			throw new PasswordUnmatchedException("Account locked for 24hrs.");
+		}
+
+	}
+
+}

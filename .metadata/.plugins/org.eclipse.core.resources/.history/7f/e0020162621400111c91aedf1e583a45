@@ -1,0 +1,26 @@
+package com.model;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Launch {
+
+	public static void main(String[] args) {
+		
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		cfg.addAnnotatedClass(Employee.class);
+		SessionFactory sf=cfg.buildSessionFactory();
+		Session session=sf.openSession();
+		Employee e=new Employee(1,"adak","adak@gmail.com","1213124");
+		Transaction t=session.beginTransaction();
+		session.get(Employee.class,1);
+		t.commit();
+		session.close();
+		sf.close();
+
+	}
+
+}

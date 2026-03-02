@@ -1,0 +1,38 @@
+package com.jdbc5;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class jdbc {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		try {
+			
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql_db","root","0000");
+			PreparedStatement ps=con.prepareStatement("Create table IF NOT EXISTS teacher(id int, name varchar(10), salary decimal(10,2));");
+			ps.executeUpdate();
+			
+			PreparedStatement ps1=con.prepareStatement("Insert into teacher values(?,?,?);");
+			System.out.println("enter id:");
+			ps1.setInt(1, sc.nextInt());
+			sc.nextLine();
+			System.out.println("enter name:");
+			ps1.setString(2, sc.nextLine());
+			System.out.println("enter salary:");
+			ps1.setDouble(3, sc.nextDouble());
+			ps1.executeUpdate();
+			
+			PreparedStatement ps3=con.prepareStatement("Select * from teacher;");
+			ResultSet rs=ps3.executeQuery();
+			while(rs.next()) {
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getDouble(3));
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

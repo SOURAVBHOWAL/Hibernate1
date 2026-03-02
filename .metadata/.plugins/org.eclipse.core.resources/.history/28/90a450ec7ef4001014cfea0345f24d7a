@@ -1,0 +1,19 @@
+
+class Test{
+	void modify(int[] arr) {
+		arr=new int[] {1,2,3};
+		arr[1]+=10;
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) {
+		Test t = new Test();
+		int[] arr=new int[] {10,20,30};
+		t.modify(arr);
+		System.out.println(arr[1]);
+
+	}
+
+}

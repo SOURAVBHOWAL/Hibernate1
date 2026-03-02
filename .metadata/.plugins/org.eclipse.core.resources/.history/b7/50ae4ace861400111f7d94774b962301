@@ -1,0 +1,76 @@
+package com.model;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Launch {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Transaction t=s.beginTransaction();
+		boolean flag=true;
+		while(flag) {
+			System.out.println("Menu:\n1.Add\n2.Retrive\n3.Update\n4.Delete\n5.Exit\nEnter Option:");
+			int option=sc.nextInt();
+			switch(option) {
+			case 1:
+				System.out.println("Enter Id:");
+				int id=sc.nextInt();
+				System.out.println("Enter Name:");
+				String name=sc.nextLine();
+				System.out.println("Enter Salary:");
+				double sal=sc.nextDouble();
+				Employee e=new Employee(id, name, sal);
+				s.persist(e);
+				System.out.println("Added successfully!");
+				break;
+			case 2:
+				System.out.println("Enter Id:");
+				int id1=sc.nextInt();
+				Employee e1=s.get(Employee.class, id1);
+				System.out.println(e1);
+				break;
+			case 3:
+				System.out.println("Enter Id:");
+				int id2=sc.nextInt();
+				System.out.println("Enter New Salary:");
+				double sal2=sc.nextDouble();
+				Employee e2=s.get(Employee.class,id2);
+				if(e2!=null) {
+					e2.setSalary(sal2);
+					System.out.println("Updated Successfully!");
+				}
+				else {
+					System.out.println("No such record.");
+				}
+				break;
+			case 4:
+				System.out.println("Enter Id:");
+				int id3=sc.nextInt();
+				Employee e3=s.get(Employee.class,id3);
+				if(e3!=null) {
+					s.remove(e3);
+					System.out.println("Deleted Successfully!");
+				}
+				else {
+					System.out.println("No such record.");
+				}
+				break;
+			case 5:
+				flag=false;
+					
+			}
+		}
+		t.commit();
+		s.close();
+		sf.close();
+
+	}
+
+}

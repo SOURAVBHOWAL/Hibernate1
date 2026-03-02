@@ -1,0 +1,6 @@
+package NonPrimitiveTypecastingCarExample;
+
+public abstract Engine {
+	//static int nCyl=4;
+	//public void fuelType();
+}

@@ -1,0 +1,74 @@
+package com.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class Jdbc2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String url="jdbc:mysql://localhost:3306/mysql_db";
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				con=DriverManager.getConnection(url,"root","0000");
+				
+				//select
+//				System.out.println("Enter Id:");
+//				int id=sc.nextInt();
+//				sc.nextLine();
+//				System.out.println("Enter Name:");
+//				String name=sc.nextLine();
+//				ps=con.prepareStatement("select * from student where id=? or name=?;");
+//				ps.setInt(1, id);
+//				ps.setString(2, name);
+//				rs=ps.executeQuery();
+//				while(rs.next()) {
+//					String arr= rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getDouble(6);
+//					System.out.println(arr);
+//				}
+				
+				//update
+//				PreparedStatement ps2=con.prepareStatement("Update student set marks=? where id=?;");
+//				System.out.println("enter Id:");
+//				ps2.setInt(2, sc.nextInt());
+//				sc.nextLine();
+//				System.out.println("enter new Marks:");
+//				ps2.setDouble(1, sc.nextDouble());
+//				ps2.executeUpdate();
+				
+				//insert
+				PreparedStatement ps3=con.prepareStatement("Insert into student values(?,?,?,?,?,?);");
+				System.out.println("enter Id:");
+				ps3.setInt(1, sc.nextInt());
+				sc.nextLine();
+				System.out.println("enter name:");
+				ps3.setString(2, sc.next());
+				sc.nextLine();
+				System.out.println("enter Age:");
+				ps3.setInt(3, sc.nextInt());
+				sc.nextLine();
+				System.out.println("enter gender:");
+				ps3.setString(4, sc.next());
+				sc.nextLine();
+				System.out.println("enter Email:");
+				ps3.setString(5, sc.next());
+				sc.nextLine();
+				System.out.println("enter new Marks:");
+				ps3.setDouble(6, sc.nextDouble());
+				ps3.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+
+	}
+
+}

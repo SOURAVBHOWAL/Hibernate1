@@ -1,0 +1,10 @@
+package com.junit;
+
+public class JUnit1 {
+	public int add(int a,int b) {
+		return a+b;
+	}
+	public Double divide(Double a,Double b) {
+		return a/b;
+	}
+}

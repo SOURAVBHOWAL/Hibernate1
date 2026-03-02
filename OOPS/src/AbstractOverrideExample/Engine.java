@@ -1,0 +1,6 @@
+package AbstractOverrideExample;
+
+public interface Engine {
+	public abstract void startEngine();
+	
+}
